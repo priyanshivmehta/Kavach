@@ -10,10 +10,11 @@ import SafetyInsiderPage from '../(tabs)/SafetyInsiderPage';
 import SettingsPage from '../(tabs)/SettingsPage';
 import UploadImagePage from '../(tabs)/UploadImagePage';
 import ReportPage from '../(tabs)/ReportPage';
-import HomePage from '../(tabs)/HomePage';
+import Awareness from '../(tabs)/Awareness';
+import Helpline from '../(tabs)/Helpline';
+
 import { ScrollView } from 'react-native-gesture-handler';
-import Login from '../(tabs)/Login';
-import SignUp from '../(tabs)/SignUp';
+
 
 const Drawer = createDrawerNavigator();
 
@@ -48,22 +49,22 @@ const CustomDrawerContent = ({ navigation }) => {
       <View style={styles.menuContainer}>
         <TouchableOpacity 
         style={styles.menuButton}
-        onPress={() => navigation.navigate('Home')}
+        onPress={() => navigation.navigate('Helpline')}
         >
-          <Text style={styles.buttonText}>Home</Text>
+          <Text style={styles.buttonText}>Helpline</Text>
         </TouchableOpacity>
         <TouchableOpacity
             style={styles.menuButton}
-            onPress={() => navigation.navigate('Report')} // Navigate to UploadImagePage
+            onPress={() => navigation.navigate('Awareness')} 
           >
-            <Text style={styles.buttonText}>Report Incident</Text>
+            <Text style={styles.buttonText}>Awareness</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
           style={styles.menuButton}
-          onPress={() => navigation.navigate('UploadImage')} // Navigate to UploadImagePage
+          onPress={() => navigation.navigate('Report')} // Navigate to UploadImagePage
         >
-          <Text style={styles.buttonText}>Upload Image</Text>
+          <Text style={styles.buttonText}>Report Incident</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
@@ -143,8 +144,6 @@ export default function SideDrawerNavigator() {
           
         }}
       />
-      <Drawer.Screen name="SignUp" component={SignUp} />
-      <Drawer.Screen name="Login" component={Login}/>
       <Drawer.Screen name="FAQs" component={FAQsPage} />
       <Drawer.Screen name="Profile" component={ProfileScreen}/>
       <Drawer.Screen name="AboutUs" component={AboutUsPage} 
@@ -197,7 +196,8 @@ export default function SideDrawerNavigator() {
           headerTitleStyle: { fontWeight: 'bold',marginLeft: 70},
         }}
       />
-      <Drawer.Screen name="Home" component={HomePage} />
+      <Drawer.Screen name="Awareness" component={Awareness} />
+      <Drawer.Screen name="Helpline" component={Helpline} />
     </Drawer.Navigator>
   );
 }

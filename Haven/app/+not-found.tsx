@@ -1,53 +1,35 @@
-import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import SignUp from './(tabs)/SignUp';  // Import the SignUp component
-import Login from './(tabs)/Login';    // Import the Login component
+import { Link, Stack } from 'expo-router';
+import { StyleSheet } from 'react-native';
 
-const AuthPage = () => {
-  // State to toggle between SignUp and Login
-  const [isSignUp, setIsSignUp] = useState(true);
+import { ThemedText } from '@/components/ThemedText';
+import { ThemedView } from '@/components/ThemedView';
+import React from 'react';
 
-  // Function to toggle the state
-  const toggleForm = () => {
-    setIsSignUp(!isSignUp);
-  };
-
+export default function NotFoundScreen() {
   return (
-    <View style={styles.container}>
-      {isSignUp ? (
-        <SignUp /> // Render SignUp component if isSignUp is true
-      ) : (
-        <Login /> // Render Login component if isSignUp is false
-      )}
+    <>
+      <Stack.Screen options={{ title: 'Oops!' }} />
+      <ThemedView style={styles.container}>
+        <ThemedText type="title">This screen doesn't exist.</ThemedText>
 
-      {/* Toggle between SignUp and Login */}
-      <TouchableOpacity onPress={toggleForm} style={styles.toggleTextContainer}>
-        <Text style={styles.toggleText}>
-          {isSignUp
-            ? "."
-            : "."}
-        </Text>
-      </TouchableOpacity>
-    </View>
+        {/* Link to HomePage */}
+        <Link href="/HomePage" style={styles.link}>
+          <ThemedText type="link">Go to Home Page</ThemedText>
+        </Link>
+      </ThemedView>
+    </>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
-    padding: 5,
-    backgroundColor: '#ffffff',
+    justifyContent: 'center',
+    padding: 20,
   },
-  toggleTextContainer: {
-    marginTop: 20,
-  },
-  toggleText: {
-    color: '#8B183F',
-    fontSize: 16,
-    textDecorationLine: 'underline',
+  link: {
+    marginTop: 15,
+    paddingVertical: 15,
   },
 });
-
-export default AuthPage;
